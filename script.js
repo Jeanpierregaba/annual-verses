@@ -1,21 +1,8 @@
-// script.js
-/*async function fetchVerses() {
-    try {
-        const response = await fetch('verses.json');
-        const data = await response.json();
-        return data.verses;
-    } catch (error) {
-        console.error('Erreur lors du chargement des versets:', error);
-        return [];
-    }
-}*/
-
-
 function generateRandomVerse() {
     fetch('verses.json')
     .then(response => response.json())
     .then(data => {
-        // Le fichier JSON est maintenant chargé, vous pouvez utiliser les données ici
+        // Chargement du fichier JSON
         versesData = data;
 
         // Récupérer un verset aléatoirement
@@ -65,8 +52,6 @@ function openModal() {
 function closeModal() {
     document.getElementById('modal').style.display = 'none';
 }
-
-
 
 function showNextPage() {
     const pages = document.querySelectorAll('.modal-page');
