@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de verset</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1c055cf137.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <img src="./assets/photo_2023-03-17_16-33-25.png" alt="">
+        <h1>LA PAIX DU SEIGNEUR JESUS-CHRIST SOIT AVEC VOUS </h1>
+        <p>Soyez la bienvenue sur notre générateur de verset annuel.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            At neque architecto nobis quae eaque repudiandae deserunt,
+            aperiam quidem dolor doloremque accusantium illo velit quisquam!
+            Nihil, ab. Optio ea sapiente delectus.
+        </p>
+        <button onclick="openModal()">Commencer</button>
+
+        <!-- Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div id="modalPages">
+                    <div class="modal-page active" id="page1">
+                        <h2>Pourquoi ce concept ?</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                             Assumenda ipsam impedit facilis iste quasi quo nulla 
+                             optio corporis, fugit est quia nemo maxime illum numquam
+                              reiciendis repudiandae magni. Cumque, incidunt.</p>
+                        <div class="navigation">
+                            <div class="previous-page1 nav">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </div>
+                            <div class="next-page1 nav" onclick="showNextPage()">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-page" id="page2">
+                        <h2>Comment ça fonctionne ?</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                             Assumenda ipsam impedit facilis iste quasi quo nulla 
+                             optio corporis, fugit est quia nemo maxime illum numquam
+                              reiciendis repudiandae magni. Cumque, incidunt.</p>
+                        <div class="navigation">
+                            <div class="previous-page nav" onclick="showPreviousPage()">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </div>
+                            <div class="next-page nav" onclick="showNextPage()">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-page" id="page3">
+                        <h2>Découvrir son verset de l'année</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                             Assumenda ipsam impedit facilis iste quasi quo nulla 
+                             optio corporis, fugit est quia nemo maxime illum numquam
+                              reiciendis repudiandae magni. Cumque, incidunt.</p>
+                        <div class="navigation">
+                            <div class="previous-page3 nav" onclick="showPreviousPage()">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </div>
+                            <div class="next-page3 nav" onclick="showNextPage()">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+                        <button onclick="startLoadingg()">Découvrir</button>
+                    </div>
+                    <div class="modal-page" id="page4">
+                        <p id="loadingText">Chargement...</p>
+                        <h3 id="introVerse" class="hidden">Votre verset de l'année est:</h3>
+                        <h1 id="reference" class="hidden"></h1>
+                        <p id="text" class="hidden"></p>
+                        <button id="downloadButton" onclick="downloadImage()" class="hidden">Télécharger l'image</button>
+                        <canvas id="canvas" class="hidden"></canvas>
+                        <img id="backgroundImage" src="./assets/bg (1).png" alt="Image de fond" class="hidden">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
