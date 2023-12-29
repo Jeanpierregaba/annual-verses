@@ -153,8 +153,11 @@ function stopLoadingAnimation() {
 }
 
 function downloadImage(){
-    // Récupérer le verset généré
+    // Récupérer la reference généré
     const reference = document.getElementById('reference').innerText;
+
+    //Récupérer le texte
+    const text = document.getElementById('text').innerText;
 
     // Récupérer le canvas et son contexte
     const canvas = document.getElementById('canvas');
@@ -170,10 +173,19 @@ function downloadImage(){
     // Dessiner l'image de fond sur le canvas
     ctx.drawImage(backgroundImage, 0, 0);
 
-    // Dessiner la phrase sur le canvas
-    ctx.font = '100px Roboto';
+    // Dessiner le texte sur le canvas
+    ctx.font = '20px Roboto';
     ctx.fillStyle = '#fff';
-    ctx.fillText(reference, 20, 50);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+    // Dessiner la reference sur le canvas
+    ctx.font = 'bold 50px Roboto';
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(reference, canvas.width / 2, 500);
 
     // Récupérer l'URL de données du canvas
     const imageDataURL = canvas.toDataURL('image/png');
