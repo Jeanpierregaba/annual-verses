@@ -156,6 +156,15 @@ button {
 }
 
 @media screen and (max-width: 600px) {
+    .container {
+        width: 80%;
+        margin: auto;
+        background-color: #fff;
+        padding: 18px;
+        border-radius: 25px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.637);
+    }
+
     .modal-content {
         background-color: #fefefe;
         margin: 5% auto;
