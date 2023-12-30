@@ -157,9 +157,166 @@ button {
     display: none;
 }
 
+@media screen and (max-width: 320px) {
+    body {
+        background-image: url(./assets/gadh-background-mobile.jpg);
+        overflow: scroll;
+    }
+
+    .container {
+        width: 80%;
+        height: 90%;
+        margin: auto;
+        background-color: white;
+        padding: 18px;
+        border-radius: 25px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.637);
+    }
+
+    .container img {
+        width: 80px;
+        height: 80px;
+        border-radius: 15px;
+    }
+
+    .container h1{
+        font-size: 18px;
+    }
+
+    .container p{
+        font-size: 12px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 35% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 70%;
+        height: 50%;
+        border-radius: 8px;
+    }
+
+    .modal-page h2{
+        font-size: 16px;
+    }
+
+    .nav {
+        margin: 10px 20px 30px;
+        width: 55px;
+        height: 55px;
+        border-radius: 100px;
+        border: 1px solid #000a25;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    body {
+        background-image: url(./assets/gadh-background-mobile.jpg);
+        overflow: scroll;
+    }
+
+    .container {
+        width: 80%;
+        height: 90%;
+        margin: auto;
+        background-color: #fff;
+        padding: 18px;
+        border-radius: 25px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.637);
+    }
+
+    .container img {
+        width: 90px;
+        height: 90px;
+        border-radius: 15px;
+    }
+
+    .container h1{
+        font-size: 30px;
+    }
+
+    .container p{
+        font-size: 14px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 35% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 70%;
+        height: 60%;
+        border-radius: 8px;
+    }
+
+    .modal-page h2{
+        font-size: 16px;
+    }
+
+    .nav {
+        margin: 10px 20px 30px;
+        width: 55px;
+        height: 55px;
+        border-radius: 100px;
+        border: 1px solid #000a25;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    body {
+        background-image: url(./assets/gadh-background-mobile.jpg);
+        overflow: scroll;
+    }
+
+    .container {
+        width: 80%;
+        height: 60%;
+        margin: auto;
+        background-color: #fff;
+        padding: 18px;
+        border-radius: 25px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.637);
+    }
+
+    .container h1{
+        font-size: 25px;
+    }
+
+    .container p{
+        font-size: 16px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 25% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 70%;
+        height: 50%;
+        border-radius: 8px;
+    }
+
+    .modal-page h2{
+        font-size: 16px;
+    }
+
+    .nav {
+        margin: 10px 20px 30px;
+        width: 55px;
+        height: 55px;
+        border-radius: 100px;
+        border: 1px solid #000a25;
+        cursor: pointer;
+    }
+}
+
 @media screen and (max-width: 600px) {
     body {
         background-image: url(./assets/gadh-background-mobile.jpg);
+        overflow: scroll;
     }
 
     .container {
@@ -229,146 +386,6 @@ button {
         font-family: 'Roboto';
         font-style: italic;
         font-size: 20px;
-    }
-}
-@media screen and (max-width: 320px) {
-    body {
-        background-image: url(./assets/gadh-background-mobile.jpg);
-    }
-
-    .container {
-        width: 80%;
-        height: 80%;
-        margin: auto;
-        background-color: #fff;
-        padding: 18px;
-        border-radius: 25px;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 0.637);
-    }
-
-    .container h1{
-        font-size: 20px;
-    }
-
-    .container p{
-        font-size: 13px;
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: 35% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 70%;
-        height: 60%;
-        border-radius: 8px;
-    }
-
-    .modal-page h2{
-        font-size: 16px;
-    }
-
-    .nav {
-        margin: 10px 20px 30px;
-        width: 55px;
-        height: 55px;
-        border-radius: 100px;
-        border: 1px solid #000a25;
-        cursor: pointer;
-    }
-}
-
-@media screen and (max-width: 375px) {
-    body {
-        background-image: url(./assets/gadh-background-mobile.jpg);
-    }
-
-    .container {
-        width: 80%;
-        height: 90%;
-        margin: auto;
-        background-color: #fff;
-        padding: 18px;
-        border-radius: 25px;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 0.637);
-    }
-
-    .container h1{
-        font-size: 25px;
-    }
-
-    .container p{
-        font-size: 16px;
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: 35% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 70%;
-        height: 60%;
-        border-radius: 8px;
-    }
-
-    .modal-page h2{
-        font-size: 16px;
-    }
-
-    .nav {
-        margin: 10px 20px 30px;
-        width: 55px;
-        height: 55px;
-        border-radius: 100px;
-        border: 1px solid #000a25;
-        cursor: pointer;
-    }
-}
-
-@media screen and (max-width: 425px) {
-    body {
-        background-image: url(./assets/gadh-background-mobile.jpg);
-    }
-
-    .container {
-        width: 80%;
-        height: 90%;
-        margin: auto;
-        background-color: #fff;
-        padding: 18px;
-        border-radius: 25px;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 0.637);
-    }
-
-    .container h1{
-        font-size: 25px;
-    }
-
-    .container p{
-        font-size: 16px;
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: 25% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 70%;
-        height: 60%;
-        border-radius: 8px;
-    }
-
-    .modal-page h2{
-        font-size: 16px;
-    }
-
-    .nav {
-        margin: 10px 20px 30px;
-        width: 55px;
-        height: 55px;
-        border-radius: 100px;
-        border: 1px solid #000a25;
-        cursor: pointer;
     }
 }
 
