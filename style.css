@@ -383,3 +383,15 @@ button {
         border-radius: 8px;
     }
 }
+
+@media  screen and (max-width: 1024px) {
+    .modal-content {
+        background-color: #fefefe;
+        margin: 9% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 55%;
+        height: 65%;
+        border-radius: 8px;
+    }
+}
