@@ -324,3 +324,62 @@ button {
         cursor: pointer;
     }
 }
+
+@media screen and (max-width: 425px) {
+    body {
+        background-image: url(./assets/gadh-background-mobile.jpg);
+    }
+
+    .container {
+        width: 80%;
+        height: 90%;
+        margin: auto;
+        background-color: #fff;
+        padding: 18px;
+        border-radius: 25px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.637);
+    }
+
+    .container h1{
+        font-size: 25px;
+    }
+
+    .container p{
+        font-size: 16px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 25% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 70%;
+        height: 60%;
+        border-radius: 8px;
+    }
+
+    .modal-page h2{
+        font-size: 16px;
+    }
+
+    .nav {
+        margin: 10px 20px 30px;
+        width: 55px;
+        height: 55px;
+        border-radius: 100px;
+        border: 1px solid #000a25;
+        cursor: pointer;
+    }
+}
+
+@media  screen and (max-width: 768px) {
+    .modal-content {
+        background-color: #fefefe;
+        margin: 9% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 55%;
+        height: 65%;
+        border-radius: 8px;
+    }
+}
