@@ -159,18 +159,18 @@ function downloadImage(){
     ctx.drawImage(backgroundImage, 0, 0);
 
     // Dessiner le texte sur le canvas
-    ctx.font = '20px Roboto';
+    ctx.font = 'italic bold 18px Roboto';
     ctx.fillStyle = '#fff';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(text, canvas.width / 2, canvas.height / 2);
 
     // Dessiner la reference sur le canvas
-    ctx.font = 'bold 50px Roboto';
+    ctx.font = 'bold 30px Roboto';
     ctx.fillStyle = '#fff';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(reference, canvas.width / 2, 500);
+    ctx.fillText(reference, 0, 370);
 
     // Récupérer l'URL de données du canvas
     const imageDataURL = canvas.toDataURL('image/png');
