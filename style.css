@@ -157,7 +157,7 @@ button {
     display: none;
 }
 
-@media screen and (max-width: 320px) {
+/*@media screen and (max-width: 320px) {
     body {
         background-image: url(./assets/gadh-background-mobile.jpg);
         overflow: scroll;
@@ -211,7 +211,7 @@ button {
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 376px) {
     body {
         background-image: url(./assets/gadh-background-mobile.jpg);
         overflow: scroll;
@@ -246,7 +246,7 @@ button {
         margin: 35% auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 70%;
+        width: 80%;
         height: 60%;
         border-radius: 8px;
     }
@@ -311,7 +311,7 @@ button {
         border: 1px solid #000a25;
         cursor: pointer;
     }
-}
+}*/
 
 @media screen and (max-width: 600px) {
     body {
