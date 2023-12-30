@@ -2,7 +2,8 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #000a25;
+    background-image: url(./assets/gadh-background.webp);
+    background-repeat: no-repeat;
     text-align: center;
     display: flex;
     align-items: center;
@@ -157,6 +158,10 @@ button {
 }
 
 @media screen and (max-width: 600px) {
+    body {
+        background-image: url(./assets/gadh-background-mobile.jpg);
+    }
+
     .container {
         width: 80%;
         margin: auto;
