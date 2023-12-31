@@ -2,6 +2,7 @@ function generateRandomVerse() {
     fetch('verses.json')
     .then(response => response.json())
     .then(data => {
+        
         // Chargement du fichier JSON
         versesData = data;
 
@@ -16,7 +17,6 @@ function generateRandomVerse() {
         // Afficher le texte du verset dans une balise p
         const verseElement = document.getElementById('text');
         verseElement.innerText = randomVerse.text;
-    
 
         // Afficher le verset généré
         document.getElementById('generatedVerse').innerText = randomVerse;
@@ -71,29 +71,7 @@ function showPreviousPage() {
     }
 }
 
-
-
-// Ajoutez une fonction pour démarrer l'animation de chargement
-/*function startLoading() {
-    const loadingText = document.getElementById('loadingText');
-    const generatedPhrase = document.getElementById('generatedPhrase');
-    
-    loadingText.innerText = 'Chargement...';
-    
-    // Masquez la phrase générée pendant le chargement
-    generatedPhrase.classList.add('hidden');
-    
-    // Simulez une charge de 3 secondes avec setTimeout
-    setTimeout(() => {
-        // Affichez la phrase générée après le chargement
-        generatedPhrase.classList.remove('hidden');
-        
-        // Générez la phrase
-        generateRandomPhrase();
-    }, 3000);
-}*/
-
-function startLoadingg() {
+function startLoading() {
     showNextPage();
     generateRandomVerse();
 
@@ -119,11 +97,7 @@ function startLoadingg() {
         downloadButton.classList.remove('hidden');
         introVerse.classList.remove('hidden');
     }, 3000);
-
-
-    
 }
-
 
 // Ajoutez une fonction pour démarrer l'animation de chargement
 function startLoadingAnimation() {
@@ -185,8 +159,6 @@ function downloadImage(){
     }
     ctx.fillText(line, canvas.width / 2, y);
 
-    //ctx.fillText(text, canvas.width / 2, canvas.height / 2);
-
     // Dessiner la reference sur le canvas
     ctx.font = 'bold 80px Roboto';
     ctx.fillStyle = '#FFFFFF';
@@ -200,7 +172,7 @@ function downloadImage(){
     // Créer un lien de téléchargement
     const downloadLink = document.createElement('a');
     downloadLink.href = imageDataURL;
-    downloadLink.download = 'phrase_generated.png';
+    downloadLink.download = 'Mon-Verset-Annuel.png';
 
     // Ajouter le lien au document et déclencher le téléchargement
     document.body.appendChild(downloadLink);
