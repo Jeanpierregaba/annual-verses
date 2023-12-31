@@ -159,18 +159,40 @@ function downloadImage(){
     ctx.drawImage(backgroundImage, 0, 0);
 
     // Dessiner le texte sur le canvas
-    ctx.font = 'italic bold 18px Roboto';
+    ctx.font = 'bold 45px Roboto';
     ctx.fillStyle = '#fff';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+    //Retour à la ligne
+    const texte = text;
+    const maxWidth = 900;
+    const lineHeight = 50;
+
+    let words = texte.split(' ');
+    let line = '';
+    let y = (canvas.height / 2) + 75;
+
+    for (let i = 0; i < words.length; i++) {
+        let testLine = line + words[i] + ' ';
+        let testWidth = ctx.measureText(testLine).width;
+        if (testWidth > maxWidth && i > 0) {
+            ctx.fillText(line, canvas.width / 2, y);
+            line = words[i] + ' ';
+            y += lineHeight;
+        } else {
+            line = testLine;
+        }
+    }
+    ctx.fillText(line, canvas.width / 2, y);
+
+    //ctx.fillText(text, canvas.width / 2, canvas.height / 2);
 
     // Dessiner la reference sur le canvas
-    ctx.font = 'bold 30px Roboto';
-    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 80px Roboto';
+    ctx.fillStyle = '#FFFFFF';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(reference, 0, 370);
+    ctx.fillText(reference, canvas.width / 2, 490);
 
     // Récupérer l'URL de données du canvas
     const imageDataURL = canvas.toDataURL('image/png');

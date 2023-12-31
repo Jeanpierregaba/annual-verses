@@ -62,11 +62,11 @@ button {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 9% auto;
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
-    height: 55%;
+    height: 65%;
     border-radius: 8px;
 }
 
