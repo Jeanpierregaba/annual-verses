@@ -187,6 +187,61 @@ button {
 
 }
 
+@media  screen and (min-width: 768px) {
+    body {
+        background-image: url(./assets/gadh-background.webp);
+        background-repeat: no-repeat;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        width: 600px;
+        margin: auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 25px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.637);
+    }
+
+    .container img {
+        width: 150px;
+        height: 150px;
+        border-radius: 15px;
+    }
+
+    .container .txt-area h1{
+        color: #000a25;
+        font-size: 30px;
+        padding: 0 5px;
+    }
+
+    .container .txt-area p{
+        color: #000a25;
+        font-size: 16px;
+    }
+    
+    .modal-content {
+        background-color: #fefefe;
+        margin: 9% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 55%;
+        height: 65%;
+        border-radius: 8px;
+    }
+
+    .modal-title-area h2{
+        font-size: 25px;
+        color: #000a25;
+        margin: 50px 0 30px;
+    }
+}
+
 /*body {
     font-family: 'Roboto', sans-serif;
     background-image: url(./assets/gadh-background.webp);
@@ -209,11 +264,8 @@ button {
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.637);
 }
 
-.container img {
-    width: 150px;
-    height: 150px;
-    border-radius: 15px;
-}
+
+
 
 .container h1{
     color: #000a25;
