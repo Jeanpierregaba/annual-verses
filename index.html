@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/favicon-32x32.png" type="image/x-icon">
-    <title>Générateur de versets bibliques</title>
+    <title>Générateur de versets biblique annuel</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/1c055cf137.js" crossorigin="anonymous"></script>
 </head>
@@ -53,7 +53,7 @@
                         <div class="modal-txt-area">
                             <p>Lorsque ce processus est suivi avec rigueur, le verset choisi nous communique la volonté de Dieu. 
                                 Faites cette prière:</p>
-                            <p><strong>1-Père, certainement ,tu as un message pour moi pour 2024</strong></p>
+                            <p><strong>1-Père, certainement ,tu as un message pour moi pour 2026</strong></p>
                             <p><strong>2-C'est le bon moment Père. Communique moi ta volonté.</strong></p>
                             <p><strong>3-Saint-Esprit, prends contrôle au nom de Jésus Christ de Nazareth.Amen</strong></p>
                         </div>
@@ -76,7 +76,10 @@
                         <button onclick="startLoading()">Découvrir</button>
                     </div>
                     <div class="modal-page" id="page4">
-                        <p id="loadingText">Chargement...</p>
+                        <div id="loadingContainer" class="loading-container">
+                            <div class="spinner"></div>
+                            <p id="loadingText">Chargement...</p>
+                        </div>
                         <div class="modal-title-area">
                             <h3 id="introVerse" class="hidden">Votre verset de l'année est:</h3>
                         </div>
@@ -86,7 +89,7 @@
                         </div>
                         <button id="downloadButton" onclick="downloadImage()" class="hidden">Télécharger l'image</button>
                         <canvas id="canvas" class="hidden"></canvas>
-                        <img id="backgroundImage" src="./assets/Template-verses.png" alt="Image de fond" class="hidden">
+                        <img id="backgroundImage" src="./assets/template-verses.jpg" alt="Image de fond" class="hidden">
                     </div>
                 </div>
             </div>

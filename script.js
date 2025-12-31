@@ -1,3 +1,6 @@
+// Variable globale pour stocker les données des versets
+let versesData = null;
+
 function generateRandomVerse() {
     fetch('verses.json')
     .then(response => response.json())
@@ -6,26 +9,39 @@ function generateRandomVerse() {
         // Chargement du fichier JSON
         versesData = data;
 
+        // Vérifier que les données sont valides
+        if (!versesData || !versesData.verses || versesData.verses.length === 0) {
+            console.error('Aucun verset disponible dans le fichier JSON');
+            return;
+        }
+
         // Récupérer un verset aléatoirement
         const randomIndex = Math.floor(Math.random() * versesData.verses.length);
         const randomVerse = versesData.verses[randomIndex];
 
+        // Vérifier que le verset est valide
+        if (!randomVerse || !randomVerse.reference || !randomVerse.text) {
+            console.error('Verset invalide récupéré');
+            return;
+        }
+
         // Afficher la référence dans une balise h1
         const referenceElement = document.getElementById('reference');
-        referenceElement.innerText = randomVerse.reference;
+        if (referenceElement) {
+            referenceElement.innerText = randomVerse.reference;
+        }
 
         // Afficher le texte du verset dans une balise p
         const verseElement = document.getElementById('text');
-        verseElement.innerText = randomVerse.text;
-
-        // Afficher le verset généré
-        document.getElementById('generatedVerse').innerText = randomVerse;
+        if (verseElement) {
+            verseElement.innerText = randomVerse.text;
+        }
     })
     .catch(error => console.error('Erreur lors du chargement du fichier JSON :', error));
 }
 
-// Appel initial pour charger les versets
-generateRandomVerse();
+// Ne pas charger les versets au démarrage - ils seront chargés quand l'utilisateur clique sur "Découvrir"
+// generateRandomVerse();
 
 // Ajoutez des fonctions pour gérer les pages du modal
 let currentPageIndex = 0;
@@ -40,12 +56,7 @@ function openModal() {
         } else {
             page.classList.remove('active');
         }
-
     });
-    document.getElementById('modal').style.display = 'block';
-}
-
-function openModal() {
     document.getElementById('modal').style.display = 'block';
 }
 
@@ -73,110 +84,161 @@ function showPreviousPage() {
 
 function startLoading() {
     showNextPage();
-    generateRandomVerse();
-
+    
+    const loadingContainer = document.getElementById('loadingContainer');
     const loadingText = document.getElementById('loadingText');
     const reference = document.getElementById('reference');
     const text = document.getElementById('text');
     const introVerse = document.getElementById('introVerse');
-    loadingText.innerText = 'Chargement...';
+    
+    // Afficher le container de chargement
+    if (loadingContainer) {
+        loadingContainer.classList.remove('hidden');
+    }
+    if (loadingText) {
+        loadingText.innerText = 'Chargement...';
+    }
 
-    startLoadingAnimation();
-
+    // Masquer les éléments du résultat
     text.classList.add('hidden');
     reference.classList.add('hidden');
-    downloadButton.classList.add('hidden');
+    introVerse.classList.add('hidden');
+    const downloadButton = document.getElementById('downloadButton');
+    if (downloadButton) {
+        downloadButton.classList.add('hidden');
+    }
+
+    // Générer le verset
+    generateRandomVerse();
+
+    // Messages de chargement progressifs
+    const loadingMessages = [
+        'Chargement...',
+        'Préparation de votre verset...',
+        'Presque terminé...'
+    ];
+    
+    let messageIndex = 0;
+    const messageInterval = setInterval(() => {
+        if (messageIndex < loadingMessages.length - 1) {
+            messageIndex++;
+            if (loadingText) {
+                loadingText.innerText = loadingMessages[messageIndex];
+            }
+        }
+    }, 1000);
 
     setTimeout(() => {
-        stopLoadingAnimation();
+        clearInterval(messageInterval);
+        
+        // Masquer le container de chargement avec fade out et scale
+        if (loadingContainer) {
+            loadingContainer.style.animation = 'fadeOutScale 0.5s ease-out forwards';
+            setTimeout(() => {
+                loadingContainer.classList.add('hidden');
+                loadingContainer.style.animation = '';
+            }, 500);
+        }
 
-        //Masquez le texte de chargement
-        loadingText.classList.add('hidden');
-        text.classList.remove('hidden');
-        reference.classList.remove('hidden');
-        downloadButton.classList.remove('hidden');
-        introVerse.classList.remove('hidden');
+        // Afficher les résultats avec animations séquentielles
+        setTimeout(() => {
+            introVerse.classList.remove('hidden');
+        }, 200);
+        
+        setTimeout(() => {
+            reference.classList.remove('hidden');
+        }, 400);
+        
+        setTimeout(() => {
+            text.classList.remove('hidden');
+        }, 600);
+        
+        setTimeout(() => {
+            if (downloadButton) {
+                downloadButton.classList.remove('hidden');
+            }
+        }, 800);
     }, 3000);
 }
 
-// Ajoutez une fonction pour démarrer l'animation de chargement
-function startLoadingAnimation() {
-    const loadingText = document.getElementById('loadingText');
-    loadingText.style.animation = 'loadingAnimation 1.5s infinite';
-}
-
-// Ajoutez une fonction pour arrêter l'animation de chargement
-function stopLoadingAnimation() {
-    const loadingText = document.getElementById('loadingText');
-    loadingText.style.animation = 'none';
-}
+// Les fonctions d'animation ne sont plus nécessaires car l'animation est gérée par CSS
 
 function downloadImage(){
     // Récupérer la reference généré
-    const reference = document.getElementById('reference').innerText;
-
-    //Récupérer le texte
-    const text = document.getElementById('text').innerText;
-
-    // Récupérer le canvas et son contexte
+    const referenceElement = document.getElementById('reference');
+    const textElement = document.getElementById('text');
     const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-
-    // Récupérer l'image de fond
     const backgroundImage = document.getElementById('backgroundImage');
 
-    // Définir la taille du canvas sur celle de l'image de fond
-    canvas.width = backgroundImage.width;
-    canvas.height = backgroundImage.height;
-
-    // Dessiner l'image de fond sur le canvas
-    ctx.drawImage(backgroundImage, 0, 0);
-
-    // Dessiner le texte sur le canvas
-    ctx.font = 'bold 45px Roboto';
-    ctx.fillStyle = '#fff';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    //Retour à la ligne
-    const texte = text;
-    const maxWidth = 900;
-    const lineHeight = 50;
-
-    let words = texte.split(' ');
-    let line = '';
-    let y = (canvas.height / 2) + 75;
-
-    for (let i = 0; i < words.length; i++) {
-        let testLine = line + words[i] + ' ';
-        let testWidth = ctx.measureText(testLine).width;
-        if (testWidth > maxWidth && i > 0) {
-            ctx.fillText(line, canvas.width / 2, y);
-            line = words[i] + ' ';
-            y += lineHeight;
-        } else {
-            line = testLine;
-        }
+    if (!referenceElement || !textElement || !canvas || !backgroundImage) {
+        console.error('Éléments manquants pour le téléchargement');
+        return;
     }
-    ctx.fillText(line, canvas.width / 2, y);
 
-    // Dessiner la reference sur le canvas
-    ctx.font = 'bold 80px Roboto';
-    ctx.fillStyle = '#FFFFFF';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(reference, canvas.width / 2, 490);
+    const reference = referenceElement.innerText;
+    const text = textElement.innerText;
+    const ctx = canvas.getContext('2d');
 
-    // Récupérer l'URL de données du canvas
-    const imageDataURL = canvas.toDataURL('image/png');
+    // Attendre que l'image soit chargée avant de dessiner
+    if (backgroundImage.complete) {
+        drawOnCanvas();
+    } else {
+        backgroundImage.onload = drawOnCanvas;
+    }
 
-    // Créer un lien de téléchargement
-    const downloadLink = document.createElement('a');
-    downloadLink.href = imageDataURL;
-    downloadLink.download = 'Mon-Verset-Annuel.png';
+    function drawOnCanvas() {
+        // Définir la taille du canvas sur celle de l'image de fond
+        canvas.width = backgroundImage.width;
+        canvas.height = backgroundImage.height;
 
-    // Ajouter le lien au document et déclencher le téléchargement
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
+        // Dessiner l'image de fond sur le canvas
+        ctx.drawImage(backgroundImage, 0, 0);
 
+        // Dessiner le texte sur le canvas
+        ctx.font = 'bold 45px Urbanist';
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        //Retour à la ligne
+        const texte = text;
+        const maxWidth = 900;
+        const lineHeight = 50;
+
+        let words = texte.split(' ');
+        let line = '';
+        let y = (canvas.height / 2) + 75;
+
+        for (let i = 0; i < words.length; i++) {
+            let testLine = line + words[i] + ' ';
+            let testWidth = ctx.measureText(testLine).width;
+            if (testWidth > maxWidth && i > 0) {
+                ctx.fillText(line, canvas.width / 2, y);
+                line = words[i] + ' ';
+                y += lineHeight;
+            } else {
+                line = testLine;
+            }
+        }
+        ctx.fillText(line, canvas.width / 2, y);
+
+        // Dessiner la reference sur le canvas
+        ctx.font = 'bold 80px Urbanist';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(reference, canvas.width / 2, 490);
+
+        // Récupérer l'URL de données du canvas
+        const imageDataURL = canvas.toDataURL('image/png');
+
+        // Créer un lien de téléchargement
+        const downloadLink = document.createElement('a');
+        downloadLink.href = imageDataURL;
+        downloadLink.download = 'Mon-Verset-Annuel.png';
+
+        // Ajouter le lien au document et déclencher le téléchargement
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
 }
